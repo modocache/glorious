@@ -1,0 +1,370 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DA6A55A61BF2C9F800C608B7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55A51BF2C9F800C608B7 /* main.swift */; };
+		DA6A55AD1BF2CA4500C608B7 /* ClassDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55AC1BF2CA4500C608B7 /* ClassDump.swift */; };
+		DA6A55B71BF2CB1C00C608B7 /* GloriousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55B61BF2CB1C00C608B7 /* GloriousTests.swift */; };
+		DA6A55BD1BF2CC6400C608B7 /* NSTask+ClassDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55BC1BF2CC6400C608B7 /* NSTask+ClassDump.swift */; };
+		DA6A55BF1BF2CF9700C608B7 /* NSURL+Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55BE1BF2CF9700C608B7 /* NSURL+Enumeration.swift */; };
+		DA6A55C11BF2D28100C608B7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55C01BF2D28100C608B7 /* Logger.swift */; };
+		DA6A55C31BF2D43700C608B7 /* NSURL+TestingFrameworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55C21BF2D43700C608B7 /* NSURL+TestingFrameworks.swift */; };
+		DA6A55C51BF2E0D100C608B7 /* NSTask+CommandLineDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55C41BF2E0D100C608B7 /* NSTask+CommandLineDescription.swift */; };
+		DA6A55C71BF2E47300C608B7 /* Process+Glorious.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55C61BF2E47300C608B7 /* Process+Glorious.swift */; };
+		DA6A55C91BF2E87D00C608B7 /* PublicHeaderDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55C81BF2E87D00C608B7 /* PublicHeaderDump.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA6A55A01BF2C9F800C608B7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DA6A55A21BF2C9F800C608B7 /* Glorious */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Glorious; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA6A55A51BF2C9F800C608B7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		DA6A55AC1BF2CA4500C608B7 /* ClassDump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassDump.swift; sourceTree = "<group>"; };
+		DA6A55B41BF2CB1C00C608B7 /* GloriousTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GloriousTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA6A55B61BF2CB1C00C608B7 /* GloriousTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GloriousTests.swift; sourceTree = "<group>"; };
+		DA6A55B81BF2CB1C00C608B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA6A55BC1BF2CC6400C608B7 /* NSTask+ClassDump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTask+ClassDump.swift"; sourceTree = "<group>"; };
+		DA6A55BE1BF2CF9700C608B7 /* NSURL+Enumeration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+Enumeration.swift"; sourceTree = "<group>"; };
+		DA6A55C01BF2D28100C608B7 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		DA6A55C21BF2D43700C608B7 /* NSURL+TestingFrameworks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSURL+TestingFrameworks.swift"; sourceTree = "<group>"; };
+		DA6A55C41BF2E0D100C608B7 /* NSTask+CommandLineDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTask+CommandLineDescription.swift"; sourceTree = "<group>"; };
+		DA6A55C61BF2E47300C608B7 /* Process+Glorious.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Process+Glorious.swift"; sourceTree = "<group>"; };
+		DA6A55C81BF2E87D00C608B7 /* PublicHeaderDump.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicHeaderDump.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DA6A559F1BF2C9F800C608B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA6A55B11BF2CB1C00C608B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DA6A55991BF2C9F800C608B7 = {
+			isa = PBXGroup;
+			children = (
+				DA6A55A41BF2C9F800C608B7 /* Glorious */,
+				DA6A55B51BF2CB1C00C608B7 /* GloriousTests */,
+				DA6A55A31BF2C9F800C608B7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DA6A55A31BF2C9F800C608B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA6A55A21BF2C9F800C608B7 /* Glorious */,
+				DA6A55B41BF2CB1C00C608B7 /* GloriousTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DA6A55A41BF2C9F800C608B7 /* Glorious */ = {
+			isa = PBXGroup;
+			children = (
+				DA6A55A51BF2C9F800C608B7 /* main.swift */,
+				DA6A55AC1BF2CA4500C608B7 /* ClassDump.swift */,
+				DA6A55C81BF2E87D00C608B7 /* PublicHeaderDump.swift */,
+				DA6A55C01BF2D28100C608B7 /* Logger.swift */,
+				DA6A55C61BF2E47300C608B7 /* Process+Glorious.swift */,
+				DA6A55BE1BF2CF9700C608B7 /* NSURL+Enumeration.swift */,
+				DA6A55BC1BF2CC6400C608B7 /* NSTask+ClassDump.swift */,
+				DA6A55C41BF2E0D100C608B7 /* NSTask+CommandLineDescription.swift */,
+				DA6A55C21BF2D43700C608B7 /* NSURL+TestingFrameworks.swift */,
+			);
+			path = Glorious;
+			sourceTree = "<group>";
+		};
+		DA6A55B51BF2CB1C00C608B7 /* GloriousTests */ = {
+			isa = PBXGroup;
+			children = (
+				DA6A55B61BF2CB1C00C608B7 /* GloriousTests.swift */,
+				DA6A55B81BF2CB1C00C608B7 /* Info.plist */,
+			);
+			path = GloriousTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DA6A55A11BF2C9F800C608B7 /* Glorious */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA6A55A91BF2C9F800C608B7 /* Build configuration list for PBXNativeTarget "Glorious" */;
+			buildPhases = (
+				DA6A559E1BF2C9F800C608B7 /* Sources */,
+				DA6A559F1BF2C9F800C608B7 /* Frameworks */,
+				DA6A55A01BF2C9F800C608B7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Glorious;
+			productName = Glorious;
+			productReference = DA6A55A21BF2C9F800C608B7 /* Glorious */;
+			productType = "com.apple.product-type.tool";
+		};
+		DA6A55B31BF2CB1C00C608B7 /* GloriousTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA6A55B91BF2CB1C00C608B7 /* Build configuration list for PBXNativeTarget "GloriousTests" */;
+			buildPhases = (
+				DA6A55B01BF2CB1C00C608B7 /* Sources */,
+				DA6A55B11BF2CB1C00C608B7 /* Frameworks */,
+				DA6A55B21BF2CB1C00C608B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GloriousTests;
+			productName = GloriousTests;
+			productReference = DA6A55B41BF2CB1C00C608B7 /* GloriousTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DA6A559A1BF2C9F800C608B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				TargetAttributes = {
+					DA6A55A11BF2C9F800C608B7 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					DA6A55B31BF2CB1C00C608B7 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+				};
+			};
+			buildConfigurationList = DA6A559D1BF2C9F800C608B7 /* Build configuration list for PBXProject "Glorious" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DA6A55991BF2C9F800C608B7;
+			productRefGroup = DA6A55A31BF2C9F800C608B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DA6A55A11BF2C9F800C608B7 /* Glorious */,
+				DA6A55B31BF2CB1C00C608B7 /* GloriousTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DA6A55B21BF2CB1C00C608B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DA6A559E1BF2C9F800C608B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA6A55C71BF2E47300C608B7 /* Process+Glorious.swift in Sources */,
+				DA6A55C51BF2E0D100C608B7 /* NSTask+CommandLineDescription.swift in Sources */,
+				DA6A55BF1BF2CF9700C608B7 /* NSURL+Enumeration.swift in Sources */,
+				DA6A55C91BF2E87D00C608B7 /* PublicHeaderDump.swift in Sources */,
+				DA6A55C11BF2D28100C608B7 /* Logger.swift in Sources */,
+				DA6A55A61BF2C9F800C608B7 /* main.swift in Sources */,
+				DA6A55AD1BF2CA4500C608B7 /* ClassDump.swift in Sources */,
+				DA6A55BD1BF2CC6400C608B7 /* NSTask+ClassDump.swift in Sources */,
+				DA6A55C31BF2D43700C608B7 /* NSURL+TestingFrameworks.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA6A55B01BF2CB1C00C608B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA6A55B71BF2CB1C00C608B7 /* GloriousTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DA6A55A71BF2C9F800C608B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DA6A55A81BF2C9F800C608B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DA6A55AA1BF2C9F800C608B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DA6A55AB1BF2C9F800C608B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		DA6A55BA1BF2CB1C00C608B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GloriousTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.modocache.GloriousTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DA6A55BB1BF2CB1C00C608B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = GloriousTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.modocache.GloriousTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DA6A559D1BF2C9F800C608B7 /* Build configuration list for PBXProject "Glorious" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA6A55A71BF2C9F800C608B7 /* Debug */,
+				DA6A55A81BF2C9F800C608B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA6A55A91BF2C9F800C608B7 /* Build configuration list for PBXNativeTarget "Glorious" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA6A55AA1BF2C9F800C608B7 /* Debug */,
+				DA6A55AB1BF2C9F800C608B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DA6A55B91BF2CB1C00C608B7 /* Build configuration list for PBXNativeTarget "GloriousTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA6A55BA1BF2CB1C00C608B7 /* Debug */,
+				DA6A55BB1BF2CB1C00C608B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DA6A559A1BF2C9F800C608B7 /* Project object */;
+}

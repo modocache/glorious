@@ -29,10 +29,9 @@ func publicHeaderDumpAllTestFrameworks(rootURL: NSURL, outputDirectoryURL: NSURL
 
     for sourceURL in sourceURLs {
       do {
-        try fileManager.copyItemAtURL(
-          sourceURL,
-          toURL: destinationURL.URLByAppendingPathComponent(sourceURL.lastPathComponent!)
-        )
+        let toURL = destinationURL.URLByAppendingPathComponent(sourceURL.lastPathComponent!)
+        logger.info("\(sourceURL.absoluteString) => \(toURL.absoluteString)")
+        try fileManager.copyItemAtURL(sourceURL, toURL: toURL)
       } catch {
         logger.error("Could not copy source URL \(sourceURL.absoluteString) to destination URL \(destinationURL.absoluteString)")
       }

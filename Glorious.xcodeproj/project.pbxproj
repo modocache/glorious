@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		DADC69941BF79FA3002049B0 /* Install Glorious */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = DADC69951BF79FA3002049B0 /* Build configuration list for PBXAggregateTarget "Install Glorious" */;
+			buildPhases = (
+				DADC699A1BF79FB2002049B0 /* CopyFiles */,
+			);
+			dependencies = (
+				DADC69991BF79FAC002049B0 /* PBXTargetDependency */,
+			);
+			name = "Install Glorious";
+			productName = "Install Glorious";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		DA6A55A61BF2C9F800C608B7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55A51BF2C9F800C608B7 /* main.swift */; };
 		DA6A55AD1BF2CA4500C608B7 /* ClassDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55AC1BF2CA4500C608B7 /* ClassDump.swift */; };
@@ -17,7 +32,18 @@
 		DA6A55C51BF2E0D100C608B7 /* NSTask+CommandLineDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55C41BF2E0D100C608B7 /* NSTask+CommandLineDescription.swift */; };
 		DA6A55C71BF2E47300C608B7 /* Process+Glorious.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55C61BF2E47300C608B7 /* Process+Glorious.swift */; };
 		DA6A55C91BF2E87D00C608B7 /* PublicHeaderDump.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6A55C81BF2E87D00C608B7 /* PublicHeaderDump.swift */; };
+		DADC699B1BF79FBF002049B0 /* Glorious in CopyFiles */ = {isa = PBXBuildFile; fileRef = DA6A55A21BF2C9F800C608B7 /* Glorious */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DADC69981BF79FAC002049B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA6A559A1BF2C9F800C608B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA6A55A11BF2C9F800C608B7;
+			remoteInfo = Glorious;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DA6A55A01BF2C9F800C608B7 /* CopyFiles */ = {
@@ -28,6 +54,16 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		DADC699A1BF79FB2002049B0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/local/bin;
+			dstSubfolderSpec = 0;
+			files = (
+				DADC699B1BF79FBF002049B0 /* Glorious in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -160,6 +196,9 @@
 					DA6A55B31BF2CB1C00C608B7 = {
 						CreatedOnToolsVersion = 7.1;
 					};
+					DADC69941BF79FA3002049B0 = {
+						CreatedOnToolsVersion = 7.1;
+					};
 				};
 			};
 			buildConfigurationList = DA6A559D1BF2C9F800C608B7 /* Build configuration list for PBXProject "Glorious" */;
@@ -176,6 +215,7 @@
 			targets = (
 				DA6A55A11BF2C9F800C608B7 /* Glorious */,
 				DA6A55B31BF2CB1C00C608B7 /* GloriousTests */,
+				DADC69941BF79FA3002049B0 /* Install Glorious */,
 			);
 		};
 /* End PBXProject section */
@@ -216,6 +256,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DADC69991BF79FAC002049B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA6A55A11BF2C9F800C608B7 /* Glorious */;
+			targetProxy = DADC69981BF79FAC002049B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DA6A55A71BF2C9F800C608B7 /* Debug */ = {
@@ -334,6 +382,20 @@
 			};
 			name = Release;
 		};
+		DADC69961BF79FA3002049B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DADC69971BF79FA3002049B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -363,6 +425,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		DADC69951BF79FA3002049B0 /* Build configuration list for PBXAggregateTarget "Install Glorious" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DADC69961BF79FA3002049B0 /* Debug */,
+				DADC69971BF79FA3002049B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

@@ -4,15 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Glorious (Class Dump).xcscheme</key>
+		<key>Glorious.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Glorious (Public Header Dump).xcscheme</key>
+		<key>Install Glorious.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -23,6 +23,16 @@
 			<true/>
 		</dict>
 		<key>DA6A55B31BF2CB1C00C608B7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DADC69821BF79F16002049B0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DADC69941BF79FA3002049B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

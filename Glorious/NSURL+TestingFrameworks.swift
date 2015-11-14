@@ -6,11 +6,12 @@ extension NSURL {
   }
 
   /// A naive check as to whether this URL points to a Mach-O file for
-  /// XCTest or SenTestingKit.
-  var isTestingFrameworkMachOFile: Bool {
-    return
-      lastPathComponent == "XCTest.framework" ||
-      lastPathComponent == "SenTestingKit.framework"
+  /// the framework with the given name.
+  ///
+  /// - parameter frameworkName: The name of the framework.
+  ///                            For example: "UIKit" or "XCTest".
+  func isFrameworkMachOFile(frameworkName: String) -> Bool {
+    return lastPathComponent == "\(frameworkName).framework"
   }
 
   /// A naive check as to whether this URL is a non-symbolic reference
@@ -63,11 +64,6 @@ extension NSURL {
   }
 
   func classDumpOutputURL(outputDirectoryURL: NSURL) -> NSURL {
-    guard isTestingFrameworkMachOFile else {
-      print("Not a testing framework.")
-      abort()
-    }
-
     let outputURL = outputDirectoryURL.URLByAppendingPathComponent(lastPathComponent!)
     if let platform = platformPathComponent {
       return outputURL.URLByAppendingPathComponent(platform)

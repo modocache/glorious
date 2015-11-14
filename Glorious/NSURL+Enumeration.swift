@@ -24,15 +24,6 @@ extension NSURL {
     }
   }
 
-  /// Enumerates all URLs that are testing framework Mach-O files.
-  func enumerateTestingFrameworkMachOFileURLs(closure: (NSURL) -> ()) {
-    enumerateDirectories { url in
-      if url.isTestingFrameworkMachOFile {
-        closure(url)
-      }
-    }
-  }
-
   func enumerateTestingFrameworkHeaderDirectoryURLs(closure: (NSURL) -> ()) {
     enumerateDirectories { url in
       if url.isTestingFrameworkHeaderDirectory {

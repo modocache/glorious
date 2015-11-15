@@ -23,12 +23,4 @@ extension NSURL {
       }
     }
   }
-
-  func enumerateTestingFrameworkHeaderDirectoryURLs(closure: (NSURL) -> ()) {
-    enumerateDirectories { url in
-      if url.isTestingFrameworkHeaderDirectory {
-        closure(url)
-      }
-    }
-  }
 }

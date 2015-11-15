@@ -3,50 +3,42 @@ import Foundation
 struct PublicHeaderDumpArguments {
   let xcodeURL: NSURL
   let outputURL: NSURL
-
-  init(xcodePath: String, outputPath: String) {
-    xcodeURL = NSURL(fileURLWithPath: xcodePath)
-    outputURL = NSURL(fileURLWithPath: outputPath)
-  }
+  let frameworks: [String]
 }
 
 struct ClassDumpArguments {
   let classDumpURL: NSURL
   let xcodeURL: NSURL
   let outputURL: NSURL
-
-  init(classDumpPath: String, xcodePath: String, outputPath: String) {
-    classDumpURL = NSURL(fileURLWithPath: classDumpPath)
-    xcodeURL = NSURL(fileURLWithPath: xcodePath)
-    outputURL = NSURL(fileURLWithPath: outputPath)
-  }
+  let frameworks: [String]
 }
 
 extension Process {
   static var isPublicHeaderDump: Bool {
-    return arguments.count == 3
+    return arguments.count == 4
   }
 
   static var publicHeaderDumpArguments: PublicHeaderDumpArguments {
-    guard arguments.count == 3 else {
-      print("Usage: Glorious.swift [path to Xcode.app] [path to output directory]")
+    guard arguments.count == 4 else {
+      print("Usage: Glorious.swift [path to Xcode.app] [path to output directory] [frameworkNameOne,frameworkNameTwo]")
       abort()
     }
     return PublicHeaderDumpArguments(
-      xcodePath: arguments[1],
-      outputPath: arguments[2]
+      xcodeURL: NSURL(fileURLWithPath: arguments[1]),
+      outputURL: NSURL(fileURLWithPath: arguments[2]),
+      frameworks: arguments[3].componentsSeparatedByString(",")
     )
   }
 
   static var classDumpArguments: ClassDumpArguments {
-    guard arguments.count == 4 else {
-      print("Usage: Glorious.swift [path to class-dump executable] [path to Xcode.app] [path to output directory]")
+    guard arguments.count == 5 else {
+      print("Usage: Glorious [path to class-dump executable] [path to Xcode.app] [path to output directory] [frameworkNameOne,frameworkNameTwo]")
       abort()
     }
     return ClassDumpArguments(
-      classDumpPath: arguments[1],
-      xcodePath: arguments[2],
-      outputPath: arguments[3]
-    )
+      classDumpURL: NSURL(fileURLWithPath: arguments[1]),
+      xcodeURL: NSURL(fileURLWithPath: arguments[2]),
+      outputURL: NSURL(fileURLWithPath: arguments[3]),
+      frameworks: arguments[4].componentsSeparatedByString(","))
   }
 }

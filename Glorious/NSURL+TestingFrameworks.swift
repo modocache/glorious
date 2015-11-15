@@ -6,24 +6,38 @@ extension NSURL {
   }
 
   /// A naive check as to whether this URL points to a Mach-O file for
-  /// the framework with the given name.
+  /// the frameworks with the given names.
   ///
   /// - parameter frameworkName: The name of the framework.
   ///                            For example: "UIKit" or "XCTest".
-  func isFrameworkMachOFile(frameworkName: String) -> Bool {
-    return lastPathComponent == "\(frameworkName).framework"
+  func isFrameworkMachOFile(frameworkNames: [String]) -> Bool {
+    for name in frameworkNames {
+      if lastPathComponent == "\(name).framework" {
+        return true
+      }
+    }
+    return false
   }
 
   /// A naive check as to whether this URL is a non-symbolic reference
   /// to a public headers directory for a testing framework like
   /// SenTestingKit or XCTest.
-  var isTestingFrameworkHeaderDirectory: Bool {
+  func isFrameworkHeaderDirectory(frameworkNames: [String]) -> Bool {
     guard let components = pathComponents else {
       print("Couldn't generate components for some reason.")
       abort()
     }
-    return lastPathComponent == "Headers" && // Is a "Headers" directory.
-      (components.contains("SenTestingKit.framework") || components.contains("XCTest.framework")) // Included in a .framework.
+    guard lastPathComponent == "Headers" else {
+      return false
+    }
+
+    for name in frameworkNames {
+      if components.contains("\(name).framework") {
+        return true
+      }
+    }
+
+    return false
   }
 
   /// Returns the first path component containing ".platform"
@@ -48,19 +62,18 @@ extension NSURL {
     return nil
   }
 
-  var testingFramework: String? {
+  var frameworkName: String? {
     guard let components = pathComponents else {
       print("Couldn't generate components for some reason.")
       abort()
     }
 
-    if components.contains("SenTestingKit.framework") {
-      return "SenTestingKit.framework"
-    } else if components.contains("XCTest.framework") {
-      return "XCTest.framework"
-    } else {
-      return nil
+    for component in components {
+      if component.containsString(".framework") {
+        return component
+      }
     }
+    return nil
   }
 
   func classDumpOutputURL(outputDirectoryURL: NSURL) -> NSURL {
@@ -73,12 +86,8 @@ extension NSURL {
   }
 
   func publicHeaderDumpOutputURL(outputDirectoryURL: NSURL) -> NSURL {
-    guard isTestingFrameworkHeaderDirectory else {
-      print("Not a testing framework header directory.")
-      abort()
-    }
-    guard let framework = testingFramework else {
-      print("Not an XCTest or SenTestingKit header directory.")
+    guard let framework = frameworkName else {
+      print("Not a framework header directory.")
       abort()
     }
 

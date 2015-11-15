@@ -6,6 +6,7 @@ if Process.isPublicHeaderDump {
   publicHeaderDumpAllTestFrameworks(
     arguments.xcodeURL,
     outputDirectoryURL: arguments.outputURL,
+    frameworks: arguments.frameworks,
     logger: logger
   )
 } else {
@@ -14,6 +15,7 @@ if Process.isPublicHeaderDump {
     arguments.classDumpURL,
     rootURL: arguments.xcodeURL,
     outputDirectoryURL: arguments.outputURL,
+    frameworks: arguments.frameworks,
     logger: logger
   )
 }

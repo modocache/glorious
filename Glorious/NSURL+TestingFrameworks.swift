@@ -1,6 +1,12 @@
 import Foundation
 
 extension NSURL {
+  var isDirectory: Bool {
+    var isDirectoryValue = ObjCBool(false)
+    NSFileManager.defaultManager().fileExistsAtPath(absoluteString, isDirectory: &isDirectoryValue)
+    return isDirectoryValue.boolValue
+  }
+
   var isSymbolicLink: Bool {
     return URLByResolvingSymlinksInPath!.absoluteString != absoluteString
   }
@@ -11,6 +17,13 @@ extension NSURL {
   /// - parameter frameworkName: The name of the framework.
   ///                            For example: "UIKit" or "XCTest".
   func isFrameworkMachOFile(frameworkNames: [String]) -> Bool {
+    guard !isDirectory else {
+      return false
+    }
+    guard !isSymbolicLink else {
+      return false
+    }
+
     for name in frameworkNames {
       if lastPathComponent == "\(name).framework" {
         return true
@@ -26,6 +39,12 @@ extension NSURL {
     guard let components = pathComponents else {
       print("Couldn't generate components for some reason.")
       abort()
+    }
+    guard isDirectory else {
+      return false
+    }
+    guard !isSymbolicLink else {
+      return false
     }
     guard lastPathComponent == "Headers" else {
       return false

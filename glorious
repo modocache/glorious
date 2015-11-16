@@ -2,7 +2,6 @@
 
 require 'rubygems'
 require 'commander/import'
-require 'shellwords'
 require 'pathname'
 
 def puts_and_execute(command)
@@ -18,7 +17,7 @@ def class_dump(search_path, path, output_base_path, frameworks)
 
   relative_path = Pathname.new(path).relative_path_from(Pathname.new(search_path)).to_s
   output_path = File.join(output_base_path, relative_path)
-  puts_and_execute("class-dump -H #{path.shellescape} -o #{output_path.shellescape}")
+  puts_and_execute("class-dump -H \"#{path}\" -o \"#{output_path}\"")
 end
 
 def copy_public_headers(search_path, path, output_base_path, frameworks)
@@ -31,8 +30,8 @@ def copy_public_headers(search_path, path, output_base_path, frameworks)
   relative_path = Pathname.new(path).relative_path_from(Pathname.new(search_path)).to_s
   output_path = File.join(output_base_path, relative_path)
 
-  puts_and_execute("mkdir -p #{output_path}")
-  puts_and_execute("cp -r #{File.join(path.shellescape, '*')} #{output_path.shellescape}")
+  puts_and_execute("mkdir -p \"#{output_path}\"")
+  puts_and_execute("cp -r \"#{path}\" \"#{output_path}\"")
 end
 
 def readme_template(frameworks)
@@ -114,14 +113,14 @@ command :commit do |c|
   c.example 'Loops over each version of Xcode and runs glorious classdump on them.', 'glorious commit "~/Dropbox/Xcode" ~/GitHub/modocache/XCTest-Dumps --frameworks SenTestingKit,XCTest'
   c.option '--frameworks STRINGS', Array, 'Frameworks to search for.'
   c.action do |args, options|
-    xcodes_path = File.expand_path(args[0]).shellescape
-    git_repository_path = File.expand_path(args[1]).shellescape
+    xcodes_path = File.expand_path(args[0])
+    git_repository_path = File.expand_path(args[1])
 
     # Short-circuit if we're not searching for any frameworks.
     next if options.frameworks.empty?
 
     # Create the directory we'll be dumping to in case it doesn't already exist.
-    puts_and_execute("mkdir -p #{git_repository_path}")
+    puts_and_execute("mkdir -p \"#{git_repository_path}\"")
 
     # "Reset" the Git repository and create an initial commit with a README.
     # Think anybody'd be upset by `rm -rf`-ing some directory without a prompt? #YOLO
@@ -137,7 +136,7 @@ command :commit do |c|
     # Enumerate each Xcode directory. The assumption is that each directory
     # is named "Xcode #{version_number} (#{build_number})".
     XCODE_VERSIONS.each do |xcode_version|
-      xcode_path = File.join(xcodes_path, xcode_version.shellescape)
+      xcode_path = File.join(xcodes_path, xcode_version)
 
       # Prepare the commit message (the Xcode directory name itself) and
       # tag name: "Xcode#{version_number}-#{build_number}".
@@ -167,7 +166,7 @@ command :commit do |c|
 
         # Assumes that glorious is installed in the PATH.
         # Dumps everything into the same repository.
-        puts_and_execute("glorious #{root_path} --frameworks #{options.frameworks.join(',')} --class-dump-output #{git_repository_path} --public-header-output #{git_repository_path}")
+        puts_and_execute("glorious \"#{root_path}\" --frameworks #{options.frameworks.join(',')} --class-dump-output \"#{git_repository_path}\" --public-header-output \"#{git_repository_path}\"")
 
         # Make the commit and tag it.
         `git add .`

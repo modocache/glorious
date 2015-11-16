@@ -1,0 +1,179 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'commander/import'
+require 'shellwords'
+require 'pathname'
+
+def puts_and_execute(command)
+  puts command
+  `#{command}`
+end
+
+def class_dump(search_path, path, output_base_path, frameworks)
+  # We're looking for executable Mach-O files, not directories.
+  return if File.directory? path
+  # We're looking for files named "X.framework".
+  return unless frameworks.include? File.basename(path).chomp(".framework")
+
+  relative_path = Pathname.new(path).relative_path_from(Pathname.new(search_path)).to_s
+  output_path = File.join(output_base_path, relative_path)
+  puts_and_execute("class-dump -H #{path.shellescape} -o #{output_path.shellescape}")
+end
+
+def copy_public_headers(search_path, path, output_base_path, frameworks)
+  # We're looking for directories named "Headers".
+  return unless File.directory? path
+  return unless File.basename(path) == "Headers"
+  # We're looking for those directories within a path that contains "X.framework".
+  return if (path.split(File::SEPARATOR) & frameworks.map { |f| "#{f}.framework" }).empty?
+
+  relative_path = Pathname.new(path).relative_path_from(Pathname.new(search_path)).to_s
+  output_path = File.join(output_base_path, relative_path)
+
+  puts_and_execute("mkdir -p #{output_path}")
+  puts_and_execute("cp -r #{File.join(path.shellescape, '*')} #{output_path.shellescape}")
+end
+
+def readme_template(frameworks)
+  "# #{frameworks.join(', ')} Headers"
+end
+
+program :version, '0.0.1'
+program :description, 'Recursively searches a directory for all specified frameworks, then runs class-dump on them, or copies their public headers, or both.'
+
+default_command :classdump
+command :classdump do |c|
+  c.syntax = 'glorious /path/to/search --class-dump-output /path/to/dump --public-header-output /path/for/headers --frameworks Foundation,UIKit'
+  c.summary = 'Default (and only) command.'
+  c.example 'Run class-dump and copy all public headers for all versions of XCTest and SenTestingKit in the currently installed version of Xcode.', 'glorious /Applications/Xcode.app --frameworks XCTest,SenTestingKit --class-dump-output ~/Desktop/XCTest-Class-Dump --public-header-output ~/Desktop/XCTest-Public-Headers'
+  c.option '--class-dump-output STRING', 'Directory to which class-dump should be output.'
+  c.option '--public-header-output STRING', 'Directory to which public headers should be copied.'
+  c.option '--frameworks STRINGS', Array, 'Frameworks to search for.'
+  c.action do |args, options|
+    # Short-circuit if we're not class-dump'ing or copying headers.
+    next if options.class_dump_output.nil? && options.public_header_output.nil?
+    # Short-circuit if we're not searching for any frameworks.
+    next if options.frameworks.empty?
+
+    search_path = File.expand_path(args[0])
+    Dir.glob("#{search_path}/**/*") do |path|
+      # We're not interested in symlinks like "Current".
+      next if File.symlink? path
+
+      unless options.class_dump_output.nil?
+        class_dump(search_path, path, File.expand_path(options.class_dump_output), options.frameworks)
+      end
+
+      unless options.public_header_output.nil?
+        copy_public_headers(search_path, path, File.expand_path(options.public_header_output), options.frameworks)
+      end
+    end
+  end
+end
+
+# We can't just glob the directory--these names aren't alphabetical.
+XCODE_VERSIONS = [
+  "Xcode 3.2",
+  "Xcode 4.3 (4E109)",
+  "Xcode 4.3.1 (4E1019)",
+  "Xcode 4.3.2 (4E2002)",
+  "Xcode 4.3.3 (4E3002)",
+  "Xcode 4.4",
+  "Xcode 4.4.1 (4F1003)",
+  "Xcode 4.5",
+  "Xcode 4.5.1",
+  "Xcode 4.5.2 (4G2008)",
+  "Xcode 4.6 (4H127)",
+  "Xcode 4.6.1 (4H512)",
+  "Xcode 4.6.2 (4H1003)",
+  "Xcode 4.6.3 (4H1503)",
+  "Xcode 5.0 (5A1413)",
+  "Xcode 5.0.1 (5A2053)",
+  "Xcode 5.0.2 (5A3005)",
+  "Xcode 5.1 (5B130a)",
+  "Xcode 5.1.1 (5B1008)",
+  "Xcode 6.0.1 (6A317)",
+  "Xcode 6.1 (6A1052d)",
+  "Xcode 6.1.1 (6A2008a)",
+  "Xcode 6.2 (6C131e)",
+  "Xcode 6.3 (6D570)",
+  "Xcode 6.3.1 (6D1002)",
+  "Xcode 6.3.2 (6D2105)",
+  "Xcode 6.4 (6E35b)",
+  "Xcode 7.0b5",
+  "Xcode 7.0b6",
+  "Xcode 7.0 (7A220)",
+  "Xcode 7.0.1 (7A1001)",
+  "Xcode 7.1 (7B91b)",
+  "Xcode 7.1.1 (7B1005)",
+  "Xcode 7.2b3 (7C62)",
+]
+
+command :commit do |c|
+  c.example 'Loops over each version of Xcode and runs glorious classdump on them.', 'glorious commit "~/Dropbox/Xcode" ~/GitHub/modocache/XCTest-Dumps --frameworks SenTestingKit,XCTest'
+  c.option '--frameworks STRINGS', Array, 'Frameworks to search for.'
+  c.action do |args, options|
+    xcodes_path = File.expand_path(args[0]).shellescape
+    git_repository_path = File.expand_path(args[1]).shellescape
+
+    # Short-circuit if we're not searching for any frameworks.
+    next if options.frameworks.empty?
+
+    # Create the directory we'll be dumping to in case it doesn't already exist.
+    puts_and_execute("mkdir -p #{git_repository_path}")
+
+    # "Reset" the Git repository and create an initial commit with a README.
+    # Think anybody'd be upset by `rm -rf`-ing some directory without a prompt? #YOLO
+    Dir.chdir("#{git_repository_path}") do
+      `rm -rf .git`
+      `rm -r *`
+      `git init`
+      File.open("README.md", "w") { |f| f.write(readme_template(options.frameworks)) }
+      `git add .`
+      puts_and_execute("git commit -m \"Initial commit.\"")
+    end
+
+    # Enumerate each Xcode directory. The assumption is that each directory
+    # is named "Xcode #{version_number} (#{build_number})".
+    XCODE_VERSIONS.each do |xcode_version|
+      xcode_path = File.join(xcodes_path, xcode_version.shellescape)
+
+      # Prepare the commit message (the Xcode directory name itself) and
+      # tag name: "Xcode#{version_number}-#{build_number}".
+      commit_msg = xcode_version
+      tag_name = commit_msg.gsub(' ', '').gsub('(', '-').gsub(')', '')
+
+      # Some special logic for my Xcode versions directory.
+      # For Xcode.app directories, skip the top-level "Contents" directory.
+      xcode_app_path = File.join(xcode_path, 'Xcode.app')
+      xcode_beta_app_path = File.join(xcode_path, 'Xcode-beta.app')
+      if Dir.exists? xcode_app_path
+        # Beta versions of Xcode 4+ are named Xcode-beta.app.
+        root_path = File.join(xcode_app_path, 'Contents')
+      elsif Dir.exists? xcode_beta_app_path
+        # Non-beta versions of Xcode 4+ are named Xcode.app.
+        root_path = File.join(xcode_beta_app_path, 'Contents')
+      else
+        # Xcode 3 and prior are installed in the Xcode verions directory.
+        # They don't have an Xcode.app top-level directory.
+        root_path = xcode_path
+      end
+
+      Dir.chdir("#{git_repository_path}") do
+        # Remove all existing files from the previous commit.
+        # Isn't it neat that this doesn't remove the hidden .git directory?
+        `rm -r *`
+
+        # Assumes that glorious is installed in the PATH.
+        # Dumps everything into the same repository.
+        puts_and_execute("glorious #{root_path} --frameworks #{options.frameworks.join(',')} --class-dump-output #{git_repository_path} --public-header-output #{git_repository_path}")
+
+        # Make the commit and tag it.
+        `git add .`
+        puts_and_execute("git commit --allow-empty -m \"#{commit_msg}\"")
+        puts_and_execute("git tag -f \"#{tag_name}\"")
+      end
+    end
+  end
+end
